@@ -1,0 +1,250 @@
+/*Beginning of styles for the welcome screen*/
+.welcome-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0px;
+  background: linear-gradient(
+    135deg,
+    #ff004c,
+    #ff8a00,
+    #ffe600,
+    #00d084,
+    #00b8ff,
+    #5b4bff,
+    #c026d3
+  );
+  width: 100%;
+  height: 100dvh;
+}
+.welcome-h1 {
+  letter-spacing: 5px;
+  font-size: 50px;
+  margin: 0;
+  color: white;
+  box-shadow: 0px 0px 20px 1px red;
+  animation-name: outer;
+  animation-duration: 10s;
+  border-radius: inherit;
+  padding: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  animation-fill-mode: forwards;
+}
+.h1-span {
+  border-radius: 50px;
+  padding: 10px;
+  /* width: 50%; */
+}
+hr {
+  margin: 0;
+  border-width: 5px;
+  border-style: dotted;
+  width: 0;
+  animation: hranimation;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.hr-span {
+  width: 50%;
+}
+@keyframes hranimation {
+  to {
+    width: 100%;
+  }
+  0% {
+    border-color: red;
+  }
+  50% {
+    border-color: yellow;
+  }
+  100% {
+    border-color: green;
+    width: 100%;
+  }
+}
+
+@keyframes outer {
+  0% {
+    box-shadow: 0px 0px 20px 1px red;
+  }
+  50% {
+    box-shadow: 0px 0px 20px 1px yellow;
+  }
+  100% {
+    box-shadow: 0px 0px 20px 1px green;
+  }
+}
+/*End of styles for the welcome screen*/
+
+/*Styles for index.html */
+.indexbody {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+header {
+  width: 40%;
+  height: 10%;
+  margin: 0;
+  gap: 1px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+svg {
+  width: 50px;
+  margin: 0;
+  display: inline;
+}
+#cancel {
+  display: none;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+}
+#ham {
+  display: inline;
+}
+.headerh1 {
+  margin: 0;
+  text-align: center;
+  letter-spacing: 20px;
+  font-size: 50px;
+  white-space: nowrap;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+main {
+  width: 100%;
+  display: flex;
+}
+aside {
+  z-index: 1;
+  /* border-radius: 20px; */
+  /* box-shadow: 0px 0px 20px 20px black; */
+  height: 100dvh;
+  display: none;
+  width: 30%;
+  padding: 10px;
+  flex-direction: column;
+  gap: 20px;
+}
+#pics {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#pics > a {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+select {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+section {
+  columns: 5;
+  width: 100%;
+  column-gap: 10px;
+  gap: 5px;
+}
+
+.my-pictures {
+  display: none;
+  width: 100%;
+  height: 100dvh;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  letter-spacing: 10%;
+  /* background-color: blue; */
+}
+/* .my-pictures > span {
+} */
+.default-pictures {
+  display: block;
+}
+.image-land {
+  transition: display 1s;
+  display: none;
+  padding: 1%;
+  background-color: rgba(41, 40, 44, 0.8);
+  width: 100%;
+  height: 100dvh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.image-land-svg {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  height: 10%;
+}
+.image-land-svg > svg {
+  height: 100%;
+}
+.image-land-div {
+  width: 80%;
+  height: 90%;
+}
+#big-img {
+  width: 100%;
+  height: 95%;
+  object-fit: contain;
+}
+
+img {
+  border-radius: 20px;
+  margin: 0px;
+  height: auto;
+  object-fit: cover;
+  /* display: block; */
+  width: 100%;
+  transition: 0.5s;
+}
+.default-pictures > img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px 10px white;
+}
+
+@media (max-width:720px) {
+  header{
+    justify-content: center;
+    padding-left: 40px;
+  }
+  .headerh1{
+    letter-spacing: 0;
+    font-size: 30px;
+  }
+  svg{
+    width: 30px;
+  }
+  .welcome-h1{
+    font-size: 20px;
+    white-space: nowrap;
+    letter-spacing: 0;
+
+  }
+  .h1-span{
+    padding: 5px;
+  }
+}
