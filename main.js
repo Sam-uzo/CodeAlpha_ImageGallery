@@ -12,40 +12,86 @@ import {
   imageLand,
   imageLandDiv,
   cancelBtnOnLand,
-  bigImg,
+  callBigImg,
   ham,
   cancel,
   body,
+  slideshow,
+  stopSlideShow,
+  next,
+  prev,
+  filter,
+  bigImgDiv,
+  filterCheck,
 } from "./script.js";
 
 let userTheme = localStorage.getItem("userTheme") || "light";
 if (bodyElement) {
-  // setTimeout(() => {
-  //   window.location.href = "index.html";
-  // }, 9000);
+  setTimeout(() => {
+    window.location.href = "main.html";
+  }, 9000);
 }
 if (!bodyElement) {
+  let bigImg = callBigImg();
+  let tempStr;
+  let filterValue = "";
+  let currentlyDisplayed;
+  let picEnd;
+  let imageName;
+  let slideShowTimeout;
+  let slideShowInterval;
   let imageArray = [];
+  let styleChange;
+  let defaultPicClone = Array.from(defaultPicturesSec.cloneNode(true).children);
+  let filterDisplay;
   toArray(images, imageArray, "displayedImage");
   imageArray.forEach((element, index) => {
     element.addEventListener("click", () => {
-      // console.log(element.src, index);
-      imageMax(defaultPicturesSec, imageLand, imageLandDiv, element);
+      stopSlideShow(slideShowInterval, slideShowTimeout);
+      imageMax(defaultPicturesSec, imageLand, element);
     });
   });
 
   cancelBtnOnLand.addEventListener("click", () => {
     imageLand.style.display = "none";
     defaultPicturesSec.style.display = "block";
+
+    stopSlideShow(slideShowInterval, slideShowTimeout);
+    // bigImgDiv.innerHTML = "";
   });
-  const innerHTMLForDefaultPic = defaultPicturesSec.innerHTML;
   ham.addEventListener("click", () => {
     asideTag.style.display = "flex";
     ham.style.display = "none";
     cancel.style.display = "inline";
     defaultPicturesSec.style.display = "none";
   });
+  slideshow.addEventListener("click", () => {
+    stopSlideShow(slideShowInterval, slideShowTimeout);
+    let count = 0;
+    if (imageLand.style.display == "flex") {
+      imageLand.style.display = "none";
+    }
+    asideTag.style.display = "none";
+    imageMax(defaultPicturesSec, imageLand, imageArray[count]);
+    cancel.style.display = "none";
+    ham.style.display = "inline";
+    setTimeout(() => {
+      bigImg.style.opacity = "1";
+    }, 200);
+    slideShowInterval = setInterval(() => {
+      count++;
+      bigImg.style.opacity = "0";
 
+      slideShowTimeout = setTimeout(() => {
+        if (count >= imageArray.length) {
+          count = 0;
+        }
+        imageMax(defaultPicturesSec, imageLand, imageArray[count]);
+
+        bigImg.style.opacity = "1";
+      }, 500);
+    }, 3000);
+  });
   cancel.addEventListener("click", () => {
     if (imageLand.style.display == "flex") {
       ham.style.display = "inline";
@@ -64,13 +110,7 @@ if (!bodyElement) {
       }
     }
   });
-  // myPictures.addEventListener("click", () => {
-  //   myPicturesSec.style.display = "flex";
-  //   defaultPicturesSec.style.display = "none";
-  //   asideTag.style.display = "none";
-  //   ham.style.display = "inline";
-  //   cancel.style.display = "none";
-  // });
+
   defaultPictures.addEventListener("click", () => {
     myPicturesSec.style.display = "none";
     defaultPicturesSec.style.display = "block";
@@ -109,10 +149,118 @@ if (!bodyElement) {
       localStorage.setItem("userTheme", "light");
     }
   });
-}
 
-// An SVG X:
-// <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-//   <line x1="18" y1="6" x2="6" y2="18"></line>
-//   <line x1="6" y1="6" x2="18" y2="18"></line>
-// </svg>
+  next.addEventListener("click", () => {
+    imageName = filterCheck(imageArray, filterValue);
+    if (!imageName) {
+      bigImg = callBigImg();
+      currentlyDisplayed = imageArray.filter((filterImg, index) => {
+        return filterImg.src === bigImg.src;
+      });
+      let filtered = imageArray.indexOf(currentlyDisplayed[0]);
+      filtered++;
+      if (filtered >= imageArray.length) {
+        tempStr = bigImgDiv.innerHTML;
+        picEnd = "No more content!";
+        bigImgDiv.innerHTML = picEnd;
+        bigImg.style.color = "inherit";
+        setTimeout(() => {
+          bigImgDiv.innerHTML = tempStr;
+          bigImg = callBigImg();
+        }, 1500);
+      } else {
+        bigImg.style.opacity = "0";
+        setTimeout(() => {
+          bigImg.src = imageArray[filtered].src;
+          bigImg.style.opacity = "1";
+        }, 500);
+      }
+    } else {
+      bigImg = callBigImg();
+      currentlyDisplayed = imageName.filter((filterImg, index) => {
+        return filterImg.src === bigImg.src;
+      });
+
+      let filtered = imageName.indexOf(currentlyDisplayed[0]);
+      filtered++;
+
+      if (filtered >= imageName.length) {
+        tempStr = bigImgDiv.innerHTML;
+        picEnd = "No more content!";
+        bigImgDiv.innerHTML = picEnd;
+        bigImg.style.color = "inherit";
+
+        setTimeout(() => {
+          bigImgDiv.innerHTML = tempStr;
+          bigImg = callBigImg();
+        }, 1500);
+      } else {
+        bigImg.style.opacity = "0";
+
+        setTimeout(() => {
+          bigImg.src = imageName[filtered].src;
+          bigImg.style.opacity = "1";
+        }, 500);
+      }
+    }
+  });
+
+  prev.addEventListener("click", () => {
+    if (!imageName) {
+      bigImg = callBigImg();
+      currentlyDisplayed = imageArray.filter((filterImg, index) => {
+        return filterImg.src === bigImg.src;
+      });
+      let filtered = imageArray.indexOf(currentlyDisplayed[0]);
+      filtered--;
+      if (filtered <= -1) {
+        tempStr = bigImgDiv.innerHTML;
+        picEnd = "No more content!";
+        bigImgDiv.innerHTML = picEnd;
+        bigImg.style.color = "inherit";
+        setTimeout(() => {
+          bigImgDiv.innerHTML = tempStr;
+          bigImg = callBigImg();
+        }, 1500);
+      } else {
+        bigImg.style.opacity = "0";
+        setTimeout(() => {
+          bigImg.src = imageArray[filtered].src;
+          bigImg.style.opacity = "1";
+        }, 500);
+      }
+    } else {
+      bigImg = callBigImg();
+      currentlyDisplayed = imageName.filter((filterImg, index) => {
+        return filterImg.src === bigImg.src;
+      });
+
+      let filtered = imageName.indexOf(currentlyDisplayed[0]);
+      filtered--;
+
+      if (filtered <= -1) {
+        tempStr = bigImgDiv.innerHTML;
+        picEnd = "No more content!";
+        bigImgDiv.innerHTML = picEnd;
+        bigImg.style.color = "inherit";
+
+        setTimeout(() => {
+          bigImgDiv.innerHTML = tempStr;
+          bigImg = callBigImg();
+        }, 1500);
+      } else {
+        bigImg.style.opacity = "0";
+        setTimeout(() => {
+          bigImg.src = imageName[filtered].src;
+          bigImg.style.opacity = "1";
+        }, 500);
+      }
+    }
+  });
+
+  filter.addEventListener("click", () => {
+    filterValue = filter.value.toLowerCase();
+    imageName = filterCheck(imageArray, filterValue);
+    defaultPicturesSec.replaceChildren(...imageName);
+  });
+}

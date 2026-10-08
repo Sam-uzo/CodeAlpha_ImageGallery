@@ -8,65 +8,97 @@
   </head>
   <body class="indexbody">
     <header>
-      <span class="hambuger">
-        <svg
-          id="ham"
-          width="800px"
-          height="800px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="style=stroke">
-            <g id="menu-hamburger">
-              <path
-                id="vector (Stroke)"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M2.25 6C2.25 5.58579 2.58579 5.25 3 5.25H21C21.4142 5.25 21.75 5.58579 21.75 6C21.75 6.41421 21.4142 6.75 21 6.75H3C2.58579 6.75 2.25 6.41421 2.25 6Z"
-                fill="currentColor"
-              />
-              <path
-                id="vector (Stroke)_2"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M2.25 12C2.25 11.5858 2.58579 11.25 3 11.25H21C21.4142 11.25 21.75 11.5858 21.75 12C21.75 12.4142 21.4142 12.75 21 12.75H3C2.58579 12.75 2.25 12.4142 2.25 12Z"
-                fill="currentColor"
-              />
-              <path
-                id="vector (Stroke)_3"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M2.25 18C2.25 17.5858 2.58579 17.25 3 17.25H21C21.4142 17.25 21.75 17.5858 21.75 18C21.75 18.4142 21.4142 18.75 21 18.75H3C2.58579 18.75 2.25 18.4142 2.25 18Z"
-                fill="currentColor"
-              />
+      <div id="header-left">
+        <span class="hambuger">
+          <svg
+            id="ham"
+            width="800px"
+            height="800px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="style=stroke">
+              <g id="menu-hamburger">
+                <path
+                  id="vector (Stroke)"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.25 6C2.25 5.58579 2.58579 5.25 3 5.25H21C21.4142 5.25 21.75 5.58579 21.75 6C21.75 6.41421 21.4142 6.75 21 6.75H3C2.58579 6.75 2.25 6.41421 2.25 6Z"
+                  fill="currentColor"
+                />
+                <path
+                  id="vector (Stroke)_2"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.25 12C2.25 11.5858 2.58579 11.25 3 11.25H21C21.4142 11.25 21.75 11.5858 21.75 12C21.75 12.4142 21.4142 12.75 21 12.75H3C2.58579 12.75 2.25 12.4142 2.25 12Z"
+                  fill="currentColor"
+                />
+                <path
+                  id="vector (Stroke)_3"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M2.25 18C2.25 17.5858 2.58579 17.25 3 17.25H21C21.4142 17.25 21.75 17.5858 21.75 18C21.75 18.4142 21.4142 18.75 21 18.75H3C2.58579 18.75 2.25 18.4142 2.25 18Z"
+                  fill="currentColor"
+                />
+              </g>
             </g>
-          </g>
-        </svg>
+          </svg>
 
+          <svg
+            id="cancel"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="36"
+            height="36"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </span>
+        <span><h1 class="headerh1">My Gallery</h1></span>
+      </div>
+      <div id="filter-div">
+        <select name="filter" id="filter">
+          <option value="">Filter</option>
+          <option value="people">People</option>
+          <option value="computer">Computers</option>
+          <option value="student">Students</option>
+          <option value="women">Women</option>
+          <option value="animal">Animals</option>
+          <option value="family">Family</option>
+          <option value="food">Food</option>
+          <option value="man">A Man</option>
+          <option value="girl">A Girl</option>
+        </select>
         <svg
-          id="cancel"
+          id="filter-icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          width="36"
-          height="36"
+          width="24"
+          height="24"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <polygon
+            points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"
+          ></polygon>
         </svg>
-      </span>
-      <span><h1 class="headerh1">My Gallery</h1></span>
+      </div>
     </header>
     <main>
       <aside>
         <span id="pics">
-          <!-- <a href="#m-p">My Pictures</a> -->
           <a href="#d-p">Default Pictures</a>
+          <a href="#slideshow" id="slideshow-btn">Slideshow</a>
         </span>
         <span>
           <select name="Theme" id="theme">
@@ -99,37 +131,68 @@
           </svg>
         </div>
         <div class="image-land-div">
-          <span></span>
-          <span><img id="big-img" src="" alt="" /></span>
-          <span>></span>
+          <button class="nav-btn" id="prev-btn" aria-label="Previous image">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <span class="big-img-span"><img id="big-img" src="" alt="" /></span>
+          <button class="nav-btn" id="next-btn" aria-label="Next image">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
       </section>
 
       <section class="default-pictures" id="d-p">
-        <img src="./Default images/pic1.jpg" alt="students sitting down" />
-        <img src="./Default images/pic2.jpg" alt="students sitting down" />
+        <img src="./Default images/pic1.jpg" name="student/people"  alt="students sitting down" />
+        <img src="./Default images/pic2.jpg" name="student/people" alt="students sitting down" />
         <img
+        name="student/people"
           src="./Default images/pic3.jpg"
           alt="a student holding a cardboard"
         />
-        <img src="./Default images/pic4.jpg" alt="a dog running" />
-        <img src="./Default images/pic5.jpg" alt="a lady in bushes" />
-        <img src="./Default images/pic6.jpg" alt="families at the dawn" />
+        <img src="./Default images/pic4.jpg" name="animal" alt="a dog running" />
+        <img src="./Default images/pic5.jpg" name="women/people" alt="a lady in bushes" />
+        <img src="./Default images/pic6.jpg" name="family/people" alt="families at the dawn" />
         <img
+        name="people and computer"
           src="./Default images/pic7.jpg"
           alt="a group of people operating their laptop"
         />
-        <img src="./Default images/pic15.jpg" alt="a bunch of gadgets" />
+        <img src="./Default images/pic15.jpg" name="man/people" alt="a picture of a man" />
         <img
+        name="women/people"
           src="./Default images/pic9.jpg"
           alt="a woman smilling and dressed in red"
         />
-        <img src="./Default images/pic10.jpg" alt="an Indian family " />
-        <img src="./Default images/pic11.jpg" alt="a Nigerian girl" />
-        <img src="./Default images/pic12.jpg" alt="an igbo man" />
-        <img src="./Default images/pic13.jpg" alt="Nigeria meal" />
-        <img src="./Default images/pic14.png" alt="a picture of a boy" />
-        <img src="./Default images/pic8.jpg" alt="a picture of a man" />
+        <img name="family/people" src="./Default images/pic10.jpg" alt="an Indian family " />
+        <img name="girl/people" src="./Default images/pic11.jpg" alt="a Nigerian girl" />
+        <img name="man/people" src="./Default images/pic12.jpg" alt="an igbo man" />
+        <img name="food" src="./Default images/pic13.jpg" alt="Nigeria meal" />
+        <img name="boy/people" src="./Default images/pic14.png" alt="a passport of a boy" />
+        <img name="gadgets/computer" src="./Default images/pic8.jpg" alt="a bunch of gadgets" />
       </section>
     </main>
     <footer>&copy; Uzobuenyi Samuel Onyekachukwu</footer>
