@@ -46,6 +46,7 @@ export function toArray(HTMLCollection, emptyArray, className) {
   return emptyArray;
 }
 export function imageMax(defaultLand, imageLand, currentImage) {
+  document.body.style.overflow = "hidden";
   bigImg = callBigImg();
   bigImg.src = currentImage.src;
   bigImg.alt = currentImage.alt;
