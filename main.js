@@ -32,6 +32,8 @@ if (bodyElement) {
   }, 9000);
 }
 if (!bodyElement) {
+  let startX = 0;
+  let startY = 0;
   let bigImg = callBigImg();
   let tempStr;
   let filterValue = "";
@@ -263,4 +265,29 @@ if (!bodyElement) {
     imageName = filterCheck(imageArray, filterValue);
     defaultPicturesSec.replaceChildren(...imageName);
   });
+
+  imageLand.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.changedTouches[0].clientX;
+      startY = e.changedTouches[0].clientY;
+    },
+    { passive: true },
+  );
+
+  imageLand.addEventListener(
+    "touchend",
+    (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+
+      // ignore short swipes and mostly-vertical ones
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+
+      if (dx < 0)
+        next.click(); // swipe left  -> next image
+      else prev.click(); // swipe right -> previous image
+    },
+    { passive: true },
+  );
 }
